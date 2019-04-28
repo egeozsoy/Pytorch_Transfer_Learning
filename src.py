@@ -8,7 +8,6 @@ from torch import optim
 from torchvision.models import resnet18
 from torchvision.transforms import transforms
 from load_cifar10_data import get_data, get_test_data
-from matplotlib import pyplot as plt
 
 class CustomTensorDataset(TensorDataset):
     """Dataset wrapping tensors.
@@ -66,8 +65,8 @@ X_test = test_data[b'data']
 # transpose for pytorch
 X_train = np.transpose(X_train, (0, 3, 1, 2))
 X_test = np.transpose(X_test, (0, 3, 1, 2))
-y_train = data[b'labels'][:sl]
-y_test = test_data[b'labels'][:sl]
+y_train = data[b'labels']
+y_test = test_data[b'labels']
 
 # normalize data(this is a very important step, which increases accuracy a lot), also according to pytorch docu, image size needs to be at least 224
 # https://pytorch.org/docs/stable/torchvision/models.html
